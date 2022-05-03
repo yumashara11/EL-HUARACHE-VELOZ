@@ -13,6 +13,3 @@ int main()
     return 0;
 }
 
-SEXOOOOOO
-JAJAJAJA EL HUARACHE VELOZ ME LA PELAAA ATTE : EL YUMA
-hola
