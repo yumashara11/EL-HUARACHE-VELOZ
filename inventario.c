@@ -45,32 +45,73 @@ void agregaDatoFinal(lista *listado,char nombre2[],int n,float precio,int cantid
 void imprimeLista(lista *ListaF)
 {
     inventario *p;
+    char siguiente;
     if (vacia(ListaF)) {
         printf("Lista vacia\n");
         return;
     }
     p = ListaF->inicio;
-    while (p!=NULL) {
-        printf("PRODUCTO: %s",p->nombre);
-        printf("PRECIO UNITARIO: [$%.2f]\n",p->precio);
-        printf("DISPONIBILIDAD: [%d]",p->cantidad);
-        printf("\n-----------------------------\n");
-        p = p->sig;
+    printf("PRODUCTO: %s",p->nombre);
+    printf("PRECIO UNITARIO: [$%.2f]\n",p->precio);
+    printf("DISPONIBILIDAD: [%d]",p->cantidad);
+    printf("\n-----------------------------\n");
+
+    while(p->sig!=NULL || p->ant!=NULL){
+        printf("**siguiente producto [s]****anterior producto [a]**");
+
+        scanf("%c",&siguiente);
+        if(p==NULL){
+            return;
+            }
+        if(siguiente == 's')
+        {
+            p=p->sig;
+            printf("----------------------------\n");
+            printf("PRODUCTO: %s",p->nombre);
+            printf("PRECIO UNITARIO: [$%.2f]\n",p->precio);
+            printf("DISPONIBILIDAD: [%d]",p->cantidad);
+            printf("\n-----------------------------\n");
+        }else if(siguiente=='a')
+        {
+            p=p->ant;
+            printf("----------------------------\n");
+            printf("PRODUCTO: %s",p->nombre);
+            printf("PRECIO UNITARIO: [$%.2f]\n",p->precio);
+            printf("DISPONIBILIDAD: [%d]",p->cantidad);
+            printf("\n-----------------------------\n");
+        }
     }
-    printf("\n");
     return;
 }
 void llenarInventario(char nombre[],int n,float*precio,int*cantidad,lista*ListaF)
 {
-     for (int k=0;k<3;k++)
-        {
-            printf("ingrese el nombre del producto\n");
-            fflush(stdin);
-            fgets(nombre,30,stdin);
-            printf("ingrese el precio del producto\n");
-            scanf("%f",precio);
-            printf("ingrese la cantidad del producto\n");
-            scanf("%d",cantidad);
-            agregaDatoFinal(ListaF,nombre,30,*precio,*cantidad);
-        }
+     int op;
+     int op2;
+     char producto[30];
+     do{
+        printf("desea modificar el inventario? 1[SI] 0[NO]\n");
+        scanf("%d",&op);
+            if(op==1)
+            {
+                printf("el producto ya esta en inventario? 1[SI] 0[NO]\n");
+                scanf("%d",&op2);
+                if(op2==0){
+                printf("ingrese el nombre del producto\n");
+                fflush(stdin);
+                fgets(nombre,30,stdin);
+                printf("ingrese el precio del producto\n");
+                scanf("%f",precio);
+                printf("ingrese la cantidad del producto\n");
+                scanf("%d",cantidad);
+                agregaDatoFinal(ListaF,nombre,30,*precio,*cantidad);
+                }
+                else if(op2==1){
+                    printf("cual es el nombre del producto?\n");
+                    fflush(stdin);
+                    fgets(producto,30,stdin);
+                    
+                }
+            }
+    }while(op!=0);
+
 }
