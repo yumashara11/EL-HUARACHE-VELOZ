@@ -42,7 +42,7 @@ void agregaDatoFinal(lista *listado,char nombre2[],int n,float precio,int cantid
     listado->n += 1;
     return;
 }
-void imprimeLista(lista *ListaF)
+void llenarCarrito(lista *ListaF)
 {
     inventario *p;
     char siguiente;
