@@ -21,7 +21,7 @@ inventario*crear(char nombre2[],int n,float precio,int cantidad);
 void agregaDatoFinal(lista *listado,char nombre[],int n,float precio,int cantidad);
 
 int vacia(lista *ListaF);
-void imprimeLista(lista *ListaF);
+void llenarCarrito(lista *ListaF);
 void llenarInventario(char nombre[],int n,float*precio,int*cantidad,lista*ListaF);
 
 
