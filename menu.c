@@ -1,10 +1,31 @@
 #include <stdio.h>
 
 void menu(int *op){
-    printf("*******EL HUARACHE VELOZ*******\n");
-    printf("**TIENDA ONLINE 100% MEXICANA**\n");
-    printf("IDENTIFICATE\n");
-    printf("[1]ALMACENISTA\n[2]CLIENTE\n[3]GERENTE\n[4]REPARTIDOR\n[5]SALIR\n");
+    printf("\n");
+    printf("|*****************************************|\n");
+    printf("|************EL HUARACHE VELOZ************|\n");
+    printf("|*****************************************|\n");
+    printf("\n----------------------------------------------------\n");
+    printf("|      TIENDA ONLINE 100 POR CIENTO MEXICANA       |\n");
+    printf("----------------------------------------------------\n");
+    printf("|+ HAS TU CARRITO Y NOSOTROS TE LO LLEVAMOS        |\n");
+    printf("|+ ABIERTO LAS 24 HORAS LOS 7 DIAS DE LA SEMANA    |\n");
+    printf("|+ ALTA VARIEDAD DE PRODCUTOS SELECTOS             |\n");
+    printf("|+ FACIL, RAPIDO, SEGURO, CONFIABLE                |\n");
+    printf("----------------------------------------------------\n\n");
+    printf("---------------------------------\n");
+    printf("|Creado por:                    |\n");
+    printf("---------------------------------\n");
+    printf("|+ Gonzalez Sanchez Jose Manuel |\n");
+    printf("|+ Jimenez Urrutia Raymundo     |\n");
+    printf("|+ Carrillo Gil Santiago        |\n");
+    printf("---------------------------------\n\n\n");
+    printf("****************\n");
+    printf("* IDENTIFICATE *\n");
+    printf("****************\n");
+    printf("*[1]ALMACENISTA*\n*[2]CLIENTE    *\n*[3]GERENTE    *\n*[4]REPARTIDOR *\n*[5]SALIR      *\n");
+    printf("****************\n\n");
+
     scanf("%d",op);
 }
 void menu_cliente(int *opcion)
