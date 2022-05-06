@@ -11,15 +11,42 @@ int main()
 
     lista *catalogo=nuevaLista();
     lista *carrito=nuevaLista();
-    do {
-    menu(&opcion);
-    switch(opcion)
-    {
-    case 1:
-        llenarInventario(nombre,30,&precio,&cantidad,catalogo);
+
+    do{
+        menu(&opcion);
+        switch(opcion)
+        {
+        case 1:
+            do{
+                menu_almacenista(&opcion);
+                switch(opcion)
+                {
+                case 1:
+                imprimeCarrito(catalogo);
+                break;
+                case 2:
+                llenarInventario(nombre,30,&precio,&cantidad,catalogo);
+                break;
+                }
+
+             }while(opcion!=3);
         break;
-    case 2:
-         llenarCarrito(catalogo);
+        case 2:
+            do{
+                menu_cliente(&opcion);
+                switch(opcion)
+                {
+                case 1:
+                llenarCarrito(catalogo,carrito);
+                break;
+                case 2:
+                confirmarCarrito(catalogo,carrito);
+                break;
+                case 3:
+                imprimeCarrito(carrito);
+                break;
+                }
+              }while(opcion!=4);
         break;
     case 3:
         break;
