@@ -14,15 +14,17 @@ typedef struct lista{
     int n;
 }lista;
 
-lista *nuevaLista();
-
+lista *nuevaLista(void);
 inventario*crear(char nombre2[],int n,float precio,int cantidad);
-
-void agregaDatoFinal(lista *listado,char nombre[],int n,float precio,int cantidad);
+inventario *modificar(lista*ListaF_2,int cantidad,char nombre[],int n);
+inventario*modificar_2(lista*ListaF_2,int cantidad, char nombre[],int n);
 
 int vacia(lista *ListaF);
-void llenarCarrito(lista *ListaF);
+
+void agregaDatoFinal(lista *listado,char nombre[],int n,float precio,int cantidad);
+void llenarCarrito(lista *ListaF,lista*carrito);
 void llenarInventario(char nombre[],int n,float*precio,int*cantidad,lista*ListaF);
-
-
+void imprimeCarrito(lista *carrito);
+void confirmarCarrito(lista*ListaF,lista*carrito);
+void imprimeLista_1(inventario*p);
 #endif // INVENTARIO_H_INCLUDED
