@@ -2,21 +2,28 @@
 #include <stdlib.h>
 #include"inventario.h"
 #include "menu.h"
+#include "gerente.h"
 int main()
 {
+    //variables para almacenista y cliente
     char nombre[30];
     float precio;
     int cantidad;
-    int opcion;
+    int opcion,opcion_2;
+    //variables para gerente
+    char cliente[50],direccion[50];
+    double telefono;
 
     lista *catalogo=nuevaLista();
     lista *carrito=nuevaLista();
-
+    colaPedidos *datos=nuevaCola();
     do{
-        menu(&opcion);
-        switch(opcion)
+
+        menu(&opcion_2);
+        switch(opcion_2)
         {
         case 1:
+
             do{
                 menu_almacenista(&opcion);
                 switch(opcion)
@@ -45,8 +52,11 @@ int main()
                 case 3:
                 imprimeCarrito(carrito);
                 break;
+                case 4:
+                llenarDatos(cliente,direccion,50,&telefono,carrito,datos);
+                break;
                 }
-              }while(opcion!=4);
+              }while(opcion!=5);
         break;
     case 3:
         break;
@@ -54,7 +64,8 @@ int main()
         break;
 
     }
-    }while(opcion!=5);
-
+    }while(opcion_2!=5);
+    imprimirCola(datos);
     return 0;
 }
+
