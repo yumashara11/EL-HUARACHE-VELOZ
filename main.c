@@ -15,10 +15,10 @@ int main()
     double telefono;
 
     lista *catalogo=nuevaLista();
-    lista *carrito=nuevaLista();
+    //lista *carrito=nuevaLista();
     colaPedidos *datos=nuevaCola();
     do{
-
+        lista *carrito=nuevaLista();
         menu(&opcion_2);
         switch(opcion_2)
         {
@@ -29,7 +29,8 @@ int main()
                 switch(opcion)
                 {
                 case 1:
-                imprimeCarrito(catalogo);
+                //imprimeCarrito(catalogo);
+                navegarInventario(catalogo);
                 break;
                 case 2:
                 llenarInventario(nombre,30,&precio,&cantidad,catalogo);
@@ -39,7 +40,9 @@ int main()
              }while(opcion!=3);
         break;
         case 2:
+
             do{
+
                 menu_cliente(&opcion);
                 switch(opcion)
                 {
@@ -57,6 +60,7 @@ int main()
                 break;
                 }
               }while(opcion!=5);
+        free(carrito);
         break;
     case 3:
         break;
@@ -68,4 +72,5 @@ int main()
     imprimirCola(datos);
     return 0;
 }
+
 
