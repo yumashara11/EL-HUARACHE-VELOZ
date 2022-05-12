@@ -1,4 +1,3 @@
-#ifndef INVENTARIO_H_INCLUDED
 #define INVENTARIO_H_INCLUDED
 typedef struct inventario{
     char nombre[30];
@@ -27,4 +26,5 @@ void llenarInventario(char nombre[],int n,float*precio,int*cantidad,lista*ListaF
 void imprimeCarrito(lista *carrito);
 void confirmarCarrito(lista*ListaF,lista*carrito);
 void imprimeLista_1(inventario*p);
+void navegarInventario(lista*carrito);
 #endif // INVENTARIO_H_INCLUDED
