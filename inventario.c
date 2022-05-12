@@ -324,3 +324,41 @@ void confirmarCarrito(lista*ListaF,lista*carrito)
     }
 
 }
+void navegarInventario(lista*carrito)
+{
+    inventario *p;
+    char siguiente;
+    int op;
+    if (vacia(carrito)) {
+        printf("Lista vacia\n");
+        return;
+    }
+    p = carrito->inicio;
+    imprimeLista_1(p);
+    while(p!=NULL)
+    {
+        printf("SALIR[e]-");
+        navegacion(&siguiente);
+        if(siguiente == 's')
+        {
+            p=p->sig;
+            imprimeLista_1(p);
+        }else if(siguiente=='a')
+            {
+                p=p->ant;
+                imprimeLista_1(p);
+            }else if(siguiente=='i')
+            {
+                p = carrito->inicio;
+                imprimeLista_1(p);
+            }else if(siguiente=='f')
+            {
+                p=carrito->fin;
+                imprimeLista_1(p);
+            }else if(siguiente=='e')
+            {
+                return;
+            }
+
+}
+}
