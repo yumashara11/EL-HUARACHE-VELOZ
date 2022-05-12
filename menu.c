@@ -50,7 +50,7 @@ void preguntas_usuario(int*op,int n)
             scanf("%d",op);
             return;
         case 2:
-            printf("\ncuantos productos desea agregar?: ");
+            printf("cuantos productos desea agregar?: ");
             scanf("%d",op);
             return;
         case 3:
