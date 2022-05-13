@@ -58,7 +58,9 @@ void llenarDatos(char cliente[],char direccion[],int n,double *telefono,lista *c
     scanf("%lf",telefono);
     precioTotal=calcularTotal(carrito);
     agregaDatoCola(cliente,direccion,n,*telefono,precioTotal,carrito,cola);
-
+    printf("\n\t!!TU PEDIDO FUE REALIZADO CON EXITO!!\n");
+    printf("SERA ENVIADO A LA BREVEDAD :), GRACAIS POR SU PREFERENCIA.\n");
+    printf("\tATTE: TIENDA 'EL HUARACHE VELOZ'\n");
 }
 float calcularTotal(lista*carrito)
 {
@@ -80,11 +82,16 @@ void imprimirCola(colaPedidos*cola)
 {
     pedido *p=cola;
     p = cola->inicio;
+    printf("********COLA DE PEDIDOS********\n");
+    int k=1;
     while (p!=NULL) {
-        printf("NOMBRE: %s\n",p->cliente);
-        printf("DIRECCION: %s\n",p->direccion);
-        printf("TELEFONO: %lf\n",p->telefono);
-        printf("TOTAL: $%f\n",p->total);
+        printf("[%d]\n",k);
+        printf("|+NOMBRE: %s\n",p->cliente);
+        printf("|+DIRECCION: %s\n",p->direccion);
+        printf("|+TELEFONO: %.0lf\n",p->telefono);
+        printf("|+TOTAL: $%.2f\n",p->total);
+        printf("------------------------------\n");
+        k++;
         p = p->sig;
     }
 }
