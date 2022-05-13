@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 void menu(int *op){
     printf("\n");
     printf("|*****************************************|\n");
@@ -32,13 +31,27 @@ void menu_cliente(int *opcion)
 {
     printf("*****CLIENTE*****\n");
     printf("[1]LLENAR CARRITO\n[2]EDITAR CARRITO\n[3]CONSULTAR CARRITO COMPLETO\n");
-    printf("[4]SALIR\n");
+    printf("[4]FINALIZAR PEDIDO\n[5]SALIR\n");
     scanf("%d",opcion);
 }
 void menu_almacenista(int *opcion)
 {
     printf("*****ALMACENISTA*****\n");
     printf("[1]CONSULTAR EL INVENTARIO\n[2]MODIFICAR INVENTARIO\n[3]SALIR\n");
+    scanf("%d",opcion);
+}
+
+void menu_gerente(int*opcion)
+{
+    printf("*****GERENTE*****\n");
+    printf("[1]COLA DE PEDIDOS\n[2]REPARTIDORES DISPONIBLES\n[3]REPARTIDORES EN TRANSITO\n");
+    printf("[4]ASIGNAR PEDIDO\n[5]SALIR\n");
+    scanf("%d",opcion);
+}
+void menu_repartidor(int*opcion)
+{
+     printf("*****REPARTIDOR*****\n");
+    printf("[1]PEDIDO ASIGNADO\n[2]NOTIFICAR ENTREGA\n[3]SALIR\n");
     scanf("%d",opcion);
 }
 void preguntas_usuario(int*op,int n)
@@ -77,3 +90,4 @@ void navegacion(char *caracter)
     printf("SIGUIENTE [s] - ANTERIOR [a] - FINAL[f] - INICIO [i]: ");
     scanf("%c",caracter);
 }
+
