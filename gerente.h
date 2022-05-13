@@ -26,3 +26,4 @@ void agregaDatoCola(char cliente[],char direccion[],int n,double telefono,float 
 void llenarDatos(char cliente[],char direccion[],int n,double *telefono,lista *carrito,colaPedidos*cola);
 
 #endif // GERENTE_H_INCLUDED
+
