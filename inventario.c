@@ -53,7 +53,7 @@ inventario*modificar_2(lista*ListaF_2,int cantidad, char nombre[],int n)
         return NULL;
     if (ListaF_2->inicio == ListaF_2->fin) {
 
-        ListaF_2->inicio->cantidad-=cantidad;
+        ListaF_2->inicio->cantidad+=cantidad;
     }
     p = ListaF_2->inicio;
     while (p!=NULL && strcmp(nombre,p->nombre) != 0) {
@@ -183,27 +183,31 @@ void llenarInventario(char nombre[],int n,float*precio,int*cantidad,lista*ListaF
 
     do
     {
-        printf("desea modificar el inventario? 1[SI] 0[NO]\n");
+        printf("---------------------------------------\n");
+        printf("desea modificar el inventario? 1[SI] 0[NO]: ");
         scanf("%d",&op);
         if(op==1)
         {
-            printf("el producto ya esta en inventario? 1[SI] 0[NO]\n");
+            printf("el producto ya esta en inventario? 1[SI] 0[NO]: ");
             scanf("%d",&op2);
             if(op2==0)
             {
-            printf("ingrese el nombre del producto\n");
+            printf("ingrese el nombre del producto: ");
             fflush(stdin);
             fgets(nombre,30,stdin);
-            printf("ingrese el precio del producto\n");
+            printf("ingrese el precio del producto: $");
             scanf("%f",precio);
-            printf("ingrese la cantidad del producto\n");
+            printf("ingrese la cantidad del producto: ");
             scanf("%d",cantidad);
             agregaDatoFinal(ListaF,nombre,30,*precio,*cantidad);
-            }else if(op2==1)
+            }else
                 {
-                printf("cual es el nombre del producto?\n");
+                printf("cual es el nombre del producto?: ");
                 fflush(stdin);
                 fgets(producto,30,stdin);
+                printf("cuantos productos desea agregar?: ");
+                scanf("%d",&op2);
+                modificar_2(ListaF,op2,producto,30);
                 }
         }
     }while(op!=0);
@@ -362,3 +366,4 @@ void navegarInventario(lista*carrito)
 
 }
 }
+
