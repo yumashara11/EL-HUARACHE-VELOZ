@@ -3,6 +3,7 @@
 #include"inventario.h"
 #include "menu.h"
 #include "gerente.h"
+#include "repartidor.h"
 int main()
 {
     //variables para almacenista y cliente
@@ -13,11 +14,13 @@ int main()
     //variables para gerente
     char cliente[50],direccion[50];
     double telefono;
-
+    //variables para llenar cola de repartidores
+    char nombreRepartidor[20];
+    double id;
     lista *catalogo=nuevaLista();
-    //lista *carrito=nuevaLista();
+    colaRepartidores*repartidores=nuevaColaR();
     colaPedidos *datos=nuevaCola();
-    do{
+        do{
         lista *carrito=nuevaLista();
         menu(&opcion_2);
         switch(opcion_2)
@@ -63,14 +66,33 @@ int main()
         free(carrito);
         break;
     case 3:
+        do{
+            menu_gerente(&opcion);
+            switch(opcion)
+            {
+            case 1:
+                imprimirCola(datos);
+                break;
+            case 2:
+                llenarRepartidores(nombreRepartidor,20,&id,repartidores);
+                imprimirCola_R(repartidores);
+                break;
+            }
+
+            }while(opcion!=5);
         break;
     case 4:
+        do{
+            menu_repartidor(&opcion);
+            /*switch(opcion){
+            case 1:
+            }*/
+
+        }while(opcion!=3);
         break;
 
     }
     }while(opcion_2!=5);
-    imprimirCola(datos);
+
     return 0;
 }
-
-
