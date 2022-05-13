@@ -1,3 +1,4 @@
+#ifndef INVENTARIO_H_INCLUDED
 #define INVENTARIO_H_INCLUDED
 typedef struct inventario{
     char nombre[30];
