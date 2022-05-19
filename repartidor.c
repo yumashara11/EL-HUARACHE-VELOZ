@@ -1,9 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "gerente.h"
 #include "repartidor.h"
-#include"menu.h"
+
 colaRepartidores *nuevaColaR()
 {
     colaRepartidores *r;
@@ -28,42 +27,44 @@ int colaVacia_R(colaRepartidores*repartidor)
 }
 void agregaDatoCola_R(char nrepartidor[],int n,double id,colaRepartidores*disponibles)
 {
-    repartidor*r=crear_3(nrepartidor,n,id);
+    repartidor*r=crear_3(nrepartidor,n,id);//se crea la estructura(repartidor) con los datos a llenar
+    /*se comprueba si la cola está vacía, si lo está agrega el repartidor al inicio de la cola*/
     if(colaVacia_R(disponibles)){
+        /*al principio siempre entrará una sola vez a este 'if' porque cuando se crea la cola, se crea vacia*/
         disponibles->inicio=disponibles->fin=r;
         disponibles->n=1;
         return;
     }
+    /*despues de añadir el primer repartidor a la cola,
+    ahora (que la cola ya no está vacía) realiza el siguiente codigo
+    donde los repartidores se agregan al final de la cola*/
+    /*cabe recalcar que aqui son solo los ENLACES entre los nodos
+    de la cola, la estructura repartidor ya fue creada anteriormente,
+    aquí solo se realizan los ENLACES correspondientes para añadir
+    ese repartidor a la cola*/
     disponibles->fin->sig=r;
     disponibles->fin=r;
     disponibles->n+=1;
+
     return;
 }
-void llenarRepartidores(char nrepartidor[],int n,double *id,colaRepartidores*repartidores)
+void llenarRepartidores(colaRepartidores*repartidores)
 {
-    strcpy(nrepartidor,"Raymundo Jimenez");
-    agregaDatoCola_R(nrepartidor,n,05,repartidores);
-
-    strcpy(nrepartidor,"Santiago Carrillo");
-    agregaDatoCola_R(nrepartidor,n,13,repartidores);
-
-    strcpy(nrepartidor,"Jose Gonzalez");
-    agregaDatoCola_R(nrepartidor,n,11,repartidores);
-
-    strcpy(nrepartidor,"Patricio Espindola");
-    agregaDatoCola_R(nrepartidor,n,69,repartidores);
-
-    strcpy(nrepartidor,"Gabriel Gutierrez");
-    agregaDatoCola_R(nrepartidor,n,420,repartidores);
-
-    strcpy(nrepartidor,"Christopher Sanchez");
-    agregaDatoCola_R(nrepartidor,n,01,repartidores);
+    int n=20;
+    /*se hace el llamado a la funcion agregaDatoCola_R() para
+    llenar mi cola de epartidores disponibles*/
+    agregaDatoCola_R("Raymundo Jimenez",n,05,repartidores);
+    agregaDatoCola_R("Santiago Carrillo",n,13,repartidores);
+    agregaDatoCola_R("Jose Gonzalez",n,11,repartidores);
+    agregaDatoCola_R("Patricio Espindola",n,69,repartidores);
+    agregaDatoCola_R("Gabriel Gutierrez",n,420,repartidores);
+    agregaDatoCola_R("Christopher Sanchez",n,01,repartidores);
 
 }
 void imprimirCola_R(colaRepartidores*cola)
 {
     printf("*****REPARTIDORES DISPONBLES******\n");
-    repartidor *r=cola;
+    repartidor *r;
     r = cola->inicio;
     while (r!=NULL) {
         printf("|+NOMBRE: %s\n",r->nrepartidor);
