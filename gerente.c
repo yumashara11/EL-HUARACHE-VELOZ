@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include <string.h>
-#include"gerente.h"
-#include"inventario.h"
-#include"menu.h"
+#include "gerente.h"
+#include "menu.h"
+/*se usa el mismo metodo de listas para crear la cola de repartidores,
+la unica diferencia es que para eliminar un repartidor de la cola, se tiene que
+eliminar del principio de la cola*/
 colaPedidos *nuevaCola()
 {
     colaPedidos *p;
@@ -42,45 +44,61 @@ void agregaDatoCola(char cliente[],char direccion[],int n,double telefono,float 
     return;
 
 }
-void llenarDatos(char cliente[],char direccion[],int n,double *telefono,lista *carrito,colaPedidos*cola)
+void llenarDatos(lista *carrito,colaPedidos*cola)
 {
-    float precioTotal;
-
+    /*esta funcione le pide sus datos al usuario y calcula el total
+    de su carrito $$$*/
+    float precioTotal=0;
+    char cliente[50],direccion[50];
+    double telefono;
     printf("********DATOS DEL CLIENTE*******\n");
     printf("ingrese su nombre: ");
     fflush(stdin);
-    fgets(cliente,n,stdin);
+    fgets(cliente,50,stdin);
     printf("ingrese su direccion: ");
     fflush(stdin);
-    fgets(direccion,n,stdin);
+    fgets(direccion,50,stdin);
     printf("ingrese su numero de telefono: ");
     fflush(stdin);
-    scanf("%lf",telefono);
+    scanf("%lf",&telefono);
+    //funcion para calcular el precio total del carrito
     precioTotal=calcularTotal(carrito);
-    agregaDatoCola(cliente,direccion,n,*telefono,precioTotal,carrito,cola);
-    printf("\n\t!!TU PEDIDO FUE REALIZADO CON EXITO!!\n");
-    printf("SERA ENVIADO A LA BREVEDAD :), GRACAIS POR SU PREFERENCIA.\n");
-    printf("\tATTE: TIENDA 'EL HUARACHE VELOZ'\n");
+    //funcion para agregar los datos del cliente, el precio total y el carrito
+    //a una cola de pedidos...
+    agregaDatoCola(cliente,direccion,50,telefono,precioTotal,carrito,cola);
+    printf("\n\n\t!!TU PEDIDO FUE REALIZADO CON EXITO!!\n");
+    printf("SERA ENVIADO A LA BREVEDAD :), GRACIAS POR SU PREFERENCIA.\n");
+    printf("\tATTE: TIENDA 'EL HUARACHE VELOZ'\n\n");
+    return;
 }
 float calcularTotal(lista*carrito)
 {
     inventario *p;
     float precioTotal=0;
+    //compruebo si solo tengo un producto en mi carrito
     if (carrito->inicio == carrito->fin) {
-        precioTotal=carrito->inicio->precio*carrito->inicio->cantidad;
+        //el precio total es igual al precio unitario por la cantidad del producto
+        precioTotal=(carrito->inicio->precio)*(carrito->inicio->cantidad);
         return precioTotal;
     }
+    //en caso contrario empezamos a recorrer el carrito
     p = carrito->inicio;
     while (p!=NULL) {
+        //el precio total es igual a la suma total del precio unitario por la cantidad de productos
         precioTotal=precioTotal+(p->precio*p->cantidad);
         p = p->sig;
     }
-    return precioTotal;
+    return precioTotal;//retorno el precio total
 }
 
 void imprimirCola(colaPedidos*cola)
 {
-    pedido *p=cola;
+    if (colaVacia(cola)){
+        printf("Cola Vacia\n");
+        return;
+    }
+
+    pedido *p;
     p = cola->inicio;
     printf("********COLA DE PEDIDOS********\n");
     int k=1;
@@ -94,4 +112,5 @@ void imprimirCola(colaPedidos*cola)
         k++;
         p = p->sig;
     }
+    return;
 }
