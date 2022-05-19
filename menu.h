@@ -8,4 +8,5 @@ void menu_gerente(int*opcion);
 void menu_repartidor(int*opcion);
 void preguntas_usuario(int*op,int n);
 void navegacion(char *caracter);
+void imprimirCorazon();
 #endif // MENU_H_INCLUDED
